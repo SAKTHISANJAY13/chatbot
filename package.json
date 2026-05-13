@@ -1,0 +1,22 @@
+{
+  "name": "ai-chatbot",
+  "version": "1.0.0",
+  "description": "Full-stack AI chatbot with Claude API",
+  "scripts": {
+    "dev": "npm run dev --workspace=server & npm run dev --workspace=client",
+    "install-all": "npm install && npm install --workspace=server && npm install --workspace=client",
+    "build": "npm run build --workspace=client",
+    "start:server": "npm start --workspace=server",
+    "start:client": "npm run dev --workspace=client"
+  },
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
