@@ -24,6 +24,19 @@ function App() {
     setInput('');
   };
 
+  const [darkMode, setDarkMode] = useState(false);
+  const toggleDarkMode = () => {
+    setDarkMode((d) => {
+      const next = !d;
+      if (next) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      return next;
+    });
+  };
+
   const handleInputChange = (e) => {
     setInput(e.target.value);
     // Auto-expand textarea
@@ -147,7 +160,7 @@ function App() {
   return (
     <div className="flex h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       {/* Sidebar */}
-      <div className="w-64 bg-white border-r border-slate-200 flex flex-col shadow-sm">
+      <div className="hidden md:flex w-64 bg-white border-r border-slate-200 flex flex-col shadow-sm">
         <div className="p-6 border-b border-slate-200">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center font-bold text-white text-lg shadow-md">
@@ -187,6 +200,31 @@ function App() {
 
       {/* Main Chat Area */}
       <div className="flex-1 flex flex-col bg-gradient-to-b from-slate-50 to-slate-100">
+        {/* Top Bar */}
+        <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-white/60 backdrop-blur-sm">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-white font-bold shadow-sm">💬</div>
+            <div>
+              <div className="font-semibold text-slate-900">ChatBot</div>
+              <div className="text-xs text-slate-500">Helpful • Fast • Friendly</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleNewChat}
+              className="text-sm text-slate-700 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg shadow-sm"
+            >
+              ✨ New
+            </button>
+            <button
+              onClick={toggleDarkMode}
+              className="text-sm text-slate-700 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg shadow-sm"
+            >
+              {darkMode ? '🌙 Dark' : '☀️ Light'}
+            </button>
+          </div>
+        </div>
         {/* Messages Container */}
         <div className="flex-1 overflow-y-auto p-8 space-y-6">
           {messages.length === 0 && (

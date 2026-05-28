@@ -75,3 +75,39 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* Utility buttons */
+.btn-lite {
+  @apply text-sm px-3 py-1.5 rounded-lg shadow-sm bg-slate-100 hover:bg-slate-200 text-slate-700;
+}
+
+/* Slightly lifted input/footer */
+.chat-input {
+  @apply bg-slate-50 text-slate-900 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white resize-none disabled:opacity-50 border border-slate-200 transition placeholder-slate-500 font-medium;
+}
+
+/* Dark mode tweaks */
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --muted: #64748b;
+}
+
+.dark {
+  --bg: #0f172a;
+  --card: #0b1220;
+  --muted: #94a3b8;
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg), #e6eef8);
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+  .p-8 {
+    padding: 1.25rem /* 20px */;
+  }
+}
